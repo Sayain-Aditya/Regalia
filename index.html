@@ -570,21 +570,26 @@
                             <form action="#" method="post"> <!-- Replace with your backend script -->
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
+                                        <label for="booking_date">Name:</label>
                                         <input type="text" name="name" class="form-control" placeholder="Your Name"
                                             required>
                                     </div>
                                     <div class="col-lg-6 mb-3">
-                                        <input type="text" id="booking_date" name="booking_date" class="form-control" placeholder="Select a booking date" required>
+                                        <label for="booking_date">Select a booking date:</label>
+                                        <input type="date" id="booking_date" name="booking_date" class="form-control" placeholder="Select a booking date" required>
                                     </div>
                                     <div class="col-lg-6 mb-3">
+                                        <label for="booking_date">Phone Number:</label>
                                         <input type="tel" name="phone" class="form-control" placeholder="Phone Number"
                                             required>
                                     </div>
                                     <div class="col-lg-6 mb-3">
+                                        <label for="booking_date">Subject:</label>
                                         <input type="text" name="subject" class="form-control" placeholder="Subject"
                                             required>
                                     </div>
                                     <div class="col-12 mb-3">
+                                        <label for="booking_date">Your Message:</label>
                                         <textarea name="message" rows="5" class="form-control"
                                             placeholder="Your Message" required></textarea>
                                     </div>
@@ -597,11 +602,11 @@
                     </div>
                 </div>
 
-                <script>
+                <!-- <script>
                 flatpickr("#booking_date", {
                     dateFormat: "Y-m-d",
                 });
-                </script>
+                </script> -->
 
                 <!-- /col -->
             </div>
