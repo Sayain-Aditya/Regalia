@@ -29,8 +29,14 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 
     <style>
+        .regalia-highlight {
+  color: #ebd7b2;
+  font-weight: bold;
+}
         .btn-floating:hover img {
             margin-bottom: -3px
         }
@@ -100,7 +106,8 @@
 
     <a href="tel:9554906092">
         <button class="btn-floating phone">
-            <img src="https://i.imgur.com/FZuns9L.png" alt="Phone">
+            <i class="fa-solid fa-phone"></i>
+
             <span>9554906092</span>
         </button>
     </a>
@@ -108,7 +115,7 @@
     <a href="https://api.whatsapp.com/send?phone=9554906092&text=Hello%20Sir%2C%20I%20have%20a%20question%20about..."
         target="_blank">
         <button class="btn-floating whatsapp">
-            <img src="https://i.imgur.com/LBW2Lso.png" alt="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
             <span>9554906092</span>
         </button>
     </a>
@@ -143,7 +150,14 @@
                             <ul>
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="about.html">About</a></li>
-                                <li><a href="room-list-2.html">Rooms & Suites</a></li>
+                                <li class="submenu">
+                                    <a href="room-list-2.html" class="show-submenu">Rooms</a>
+                                   <ul>
+                                       <li><a href="DeluxRoom.html">DELUXE ROOM</a></li>
+                                       <li><a href="StandardRoom.html">STANDARD ROOM</a></li>
+                                     
+                                   </ul>
+                               </li>
                                 <li><a href="restaurant.html">Restaurant</a></li>
                                 <li><a href="gallery.html">Gallery</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
@@ -309,7 +323,7 @@
 
       <div class="container margin_120_95">
           <div class="title text-center mb-5">
-              <small data-cue="slideInUp">Paradise Hotel</small>
+              <small data-cue="slideInUp">REGALIA</small>
               <h2 data-cue="slideInUp" data-delay="100">Main Facilities</h2>
           </div>
           <div class="row mt-4">
@@ -350,7 +364,7 @@
                       <small>Regalia Banquet & Resort Faq</small>
                       <h3>Frequently Questions</h3>
                   </div>
-                  <p>Can’t find your question in the list?
+                  <p>Can't find your question in the list?
                       Let us know your questions.</p>
                   <p><a href="contacts.html" class="animated_link"><strong>Contact Us <i class="bi bi-arrow-right"></i></strong></a></p>
               </div>
@@ -366,7 +380,7 @@
                           </div>
                           <div id="collapseOne_product" class="collapse" role="tabpanel" data-bs-parent="#faq">
                               <div class="card-body">
-                                  <p>Cancellation requests must be made in advance, as per the resort’s policy. Refunds, if applicable, depend on the timing and reason for cancellation. Charges may apply for late cancellations or no-shows. Please review booking terms or contact customer service for detailed cancellation and refund information.</p>
+                                  <p>Cancellation requests must be made in advance, as per the resort's policy. Refunds, if applicable, depend on the timing and reason for cancellation. Charges may apply for late cancellations or no-shows. Please review booking terms or contact customer service for detailed cancellation and refund information.</p>
                                   <p>Cancellation requests should be submitted as early as possible to avoid penalties. Refund eligibility depends on the timing of the request and the cancellation policy of the booking. Late cancellations or no-shows may incur additional charges. Please refer to the booking terms for specific details, or contact customer service for assistance.</p>
                               </div>
                           </div>
@@ -460,7 +474,7 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="about.html">About Us</a></li>
-                            <li><a href="#">Rooms &amp; Suites</a></li>
+                            <li><a href="#">Rooms</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
                         </ul>
                     </div>
@@ -485,7 +499,14 @@
         <!--/container-->
         <div class="copy">
             <div class="container">
-                © Regalia - by <a href="https://www.shineinfosolutions.in/">Shine Infosolutions</a>
+                <div class="row">
+                    <div class="col-md-6 text-start">
+                      All rights reserved <span class="regalia-highlight">To Regalia Banquet & Resort</span>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        Developed by <a href="https://www.shineinfosolutions.in/">Shine Infosolutions</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

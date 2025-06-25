@@ -29,8 +29,14 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 
     <style>
+          .regalia-highlight {
+  color: #ebd7b2;
+  font-weight: bold;
+}
         .btn-floating:hover img {
             margin-bottom: -3px
         }
@@ -115,7 +121,8 @@
 
     <a href="tel:9554906092">
         <button class="btn-floating phone">
-            <img src="https://i.imgur.com/FZuns9L.png" alt="Phone">
+            <i class="fa-solid fa-phone"></i>
+
             <span>9554906092</span>
         </button>
     </a>
@@ -123,7 +130,7 @@
     <a href="https://api.whatsapp.com/send?phone=9554906092&text=Hello%20Sir%2C%20I%20have%20a%20question%20about..."
         target="_blank">
         <button class="btn-floating whatsapp">
-            <img src="https://i.imgur.com/LBW2Lso.png" alt="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
             <span>9554906092</span>
         </button>
     </a>
@@ -154,7 +161,14 @@
                             <ul>
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="about.html">About</a></li>
-                                <li><a href="room-list-2.html">Rooms & Suites</a></li>
+                                <li class="submenu">
+                                    <a href="room-list-2.html" class="show-submenu">Rooms</a>
+                                   <ul>
+                                       <li><a href="room-list-2.html">DELUXE ROOM</a></li>
+                                       <li><a href="room-list-3.html">STANDARD ROOM</a></li>
+                                     
+                                   </ul>
+                               </li>
                                 <li><a href="restaurant.html">Restaurant</a></li>
                                 <li><a href="gallery.html">Gallery</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
@@ -660,9 +674,9 @@
                     <div class="footer_links">
                         <ul>
                             <li><a href="index.html">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Rooms &amp; Suites</a></li>
-                            <li><a href="#">Contacts</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#">Rooms</a></li>
+                            <li><a href="contacts.html">Contacts</a></li>
                         </ul>
                     </div>
                 </div>
@@ -686,7 +700,14 @@
         <!--/container-->
         <div class="copy">
             <div class="container">
-                © Regalia - by <a href="https://www.shineinfosolutions.in/">Shine Infosolutions</a>
+                <div class="row">
+                    <div class="col-md-6 text-start">
+                      All rights reserved <span class="regalia-highlight">To Regalia Banquet & Resort</span>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        Developed by <a href="https://www.shineinfosolutions.in/">Shine Infosolutions</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

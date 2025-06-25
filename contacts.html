@@ -29,8 +29,14 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 
     <style>
+          .regalia-highlight {
+  color: #ebd7b2;
+  font-weight: bold;
+}
         .btn-floating:hover img {
             margin-bottom: -3px
         }
@@ -111,7 +117,8 @@
 
     <a href="tel:9554906092">
         <button class="btn-floating phone">
-            <img src="https://i.imgur.com/FZuns9L.png" alt="Phone">
+            <i class="fa-solid fa-phone"></i>
+
             <span>9554906092</span>
         </button>
     </a>
@@ -119,7 +126,7 @@
     <a href="https://api.whatsapp.com/send?phone=9554906092&text=Hello%20Sir%2C%20I%20have%20a%20question%20about..."
         target="_blank">
         <button class="btn-floating whatsapp">
-            <img src="https://i.imgur.com/LBW2Lso.png" alt="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
             <span>9554906092</span>
         </button>
     </a>
@@ -154,7 +161,14 @@
                             <ul>
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="about.html">About</a></li>
-                                <li><a href="room-list-2.html">Rooms & Suites</a></li>
+                                <li class="submenu">
+                                    <a href="room-list-2.html" class="show-submenu">Rooms</a>
+                                   <ul>
+                                       <li><a href="DeluxRoom.html">DELUXE ROOM</a></li>
+                                       <li><a href="StandardRoom.html">STANDARD ROOM</a></li>
+                                     
+                                   </ul>
+                               </li>
                                 <li><a href="restaurant.html">Restaurant</a></li>
                                 <li><a href="gallery.html">Gallery</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
@@ -211,17 +225,18 @@
                 <div class="col-xl-7 col-lg-7 order-lg-1">
                     <h3 class="mb-3">Get in Touch</h3>
                     <div id="message-contact"></div>
-                    <form method="post" action="https://www.ansonika.com/paradise/html-menu-1/phpmailer/contact_template_email.php" id="contactform" autocomplete="off">
+                    <form method="POST" action="https://api.web3forms.com/submit" id="contactform" autocomplete="off">
+                        <input type="hidden" name="access_key" value="0157d954-4db6-4ba2-9795-47ef108007b7" />
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-floating mb-4">
-                                    <input class="form-control" type="text" id="name_contact" name="name_contact" placeholder="Name">
+                                    <input class="form-control" type="text" id="name_contact" name="name" placeholder="Name" required>
                                     <label for="name_contact">Name</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating mb-4">
-                                    <input class="form-control" type="text" id="lastname_contact" name="lastname_contact" placeholder="Last Name">
+                                    <input class="form-control" type="text" id="lastname_contact" name="lastname" placeholder="Last Name" required>
                                     <label for="lastname_contact">Last name</label>
                                 </div>
                             </div>
@@ -230,32 +245,64 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-floating mb-4">
-                                    <input class="form-control" type="email" id="email_contact" name="email_contact" placeholder="Email">
+                                    <input class="form-control" type="email" id="email_contact" name="email" placeholder="Email" required>
                                     <label for="email_contact">Email</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating mb-4">
-                                    <input class="form-control" type="text" id="phone_contact" name="phone_contact" placeholder="Telephone">
+                                    <input class="form-control" type="text" id="phone_contact" name="phone" placeholder="Telephone">
                                     <label for="phone_contact">Telephone</label>
                                 </div>
                             </div>
                         </div>
                         <!-- /row -->
                         <div class="form-floating mb-4">
-                            <textarea class="form-control" placeholder="Message" id="message_contact" name="message_contact"></textarea>
+                            <textarea class="form-control" placeholder="Message" id="message_contact" name="message" required></textarea>
                             <label for="message_contact">Message</label>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-4">
-                                    <input class="form-control" type="text" id="verify_contact" name="verify_contact" placeholder="Are you human? 3 + 1 =">
+                                    <input class="form-control" type="text" id="verify_contact" name="verify" placeholder="Are you human? 3 + 1 =">
                                     <label for="verify_contact">Are you human? 3 + 1 =</label>
                                 </div>
                             </div>
                         </div>
                         <p class="mt-3"><input type="submit" value="Submit" class="btn_1 outline" id="submit-contact"></p>
                     </form>
+                    <div id="result-contact" style="margin-top: 1rem;"></div>
+                    <script>
+                    document.getElementById('contactform').onsubmit = function(e) {
+                      e.preventDefault();
+                      var form = this;
+                      var data = new FormData(form);
+                      fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                      }).then(response => {
+                        if (response.ok) {
+                          showContactResult('Thank you! Your message has been sent.', true);
+                          form.reset();
+                        } else {
+                          response.json().then(data => {
+                            showContactResult(data.message || 'Oops! Something went wrong.', false);
+                          });
+                        }
+                      }).catch(error => {
+                        showContactResult('Oops! Something went wrong.', false);
+                      });
+                    };
+
+                    function showContactResult(message, isSuccess) {
+                      var resultDiv = document.getElementById('result-contact');
+                      resultDiv.innerHTML = `<div class="alert ${isSuccess ? 'alert-success' : 'alert-danger'}" role="alert">${message}</div>`;
+                      setTimeout(function() {
+                        resultDiv.innerHTML = '';
+                      }, 5000);
+                    }
+                    </script>
                 </div>
             </div>
             <!-- /row -->
@@ -263,7 +310,6 @@
         <!--/container -->
 
         <div class="map_contact">
-            <iframe src="" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.543465923753!2d83.35212277457784!3d26.79081886531982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399145774bc7b3c7%3A0xe29888b91d26a7b2!2sThe%20Regalia%20Banquet%20and%20Resort%20%26%20Marriage%20Hall%20in%20Gorakhpur!5e0!3m2!1sen!2sin!4v1747212689825!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <!--/map_contact -->
@@ -273,7 +319,7 @@
                 <div class="col-xl-4">
                     <div data-cue="slideInUp">
                         <div class="title">
-                            <small>Paradise Hotel</small>
+                            <small>REGALIA</small>
                             <h2>Check Availability</h2>
                         </div>
                         <p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. </p>
@@ -292,8 +338,8 @@
                                         <select class="wide">
                                             <option>Select Room</option>
                                             <option>Double Room</option>
-                                            <option>Deluxe Room</option>
-                                            <option>Superior Room</option>
+                                            <option>DELUXE ROOM</option>
+                                            <option>STANDARD ROOM</option>
                                             <option>Junior Suite</option>
                                         </select>
                                     </div>
@@ -356,7 +402,7 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="about.html">About Us</a></li>
-                            <li><a href="#">Rooms &amp; Suites</a></li>
+                            <li><a href="#">Rooms</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
                         </ul>
                     </div>
@@ -381,7 +427,14 @@
         <!--/container-->
         <div class="copy">
             <div class="container">
-                © Regalia - by <a href="https://www.shineinfosolutions.in/">Shine Infosolutions</a>
+                <div class="row">
+                    <div class="col-md-6 text-start">
+                      All rights reserved <span class="regalia-highlight">To Regalia Banquet & Resort</span>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        Developed by <a href="https://www.shineinfosolutions.in/">Shine Infosolutions</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
