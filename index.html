@@ -7,9 +7,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Shine Infosolutions">
+    <meta name="description" content="Regalia Banquet & Resort in Gorakhpur offers luxury rooms, elegant banquets, a fine restaurant, and a serene swimming pool. Experience refined hospitality and unforgettable celebrations.">
+    <meta name="keywords" content="Regalia, Banquet, Resort, Gorakhpur, Hotel, Rooms, Restaurant, Swimming Pool, Events, Weddings, Luxury, Best Resort in Gorakhpur">
+    <meta name="author" content="Regalia">
+    <meta name="robots" content="index, follow">
     <title>Regalia Banquet & Resort</title>
+
 
     <!-- Favicons-->
     <link rel="shortcut icon"
@@ -526,7 +529,7 @@
                 <div class="col-xl-7">
                     <div data-cue="slideInUp" data-delay="200">
                         <div class="booking_wrapper">
-                            <form action="https://api.web3forms.com/submit" method="POST" id="web3forms-booking-form"> <!-- Connected to Web3Forms -->
+                            <form action="https://api.web3forms.com/submit" method="POST"> <!-- Connected to Web3Forms -->
                                 <input type="hidden" name="access_key" value="0157d954-4db6-4ba2-9795-47ef108007b7" />
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
@@ -558,9 +561,9 @@
                     </div>
                 </div>
 
-                <div id="web3forms-result" style="margin-top: 1rem;"></div>
+                <div id="result" style="margin-top: 1rem;"></div>
                 <script>
-                document.getElementById('web3forms-booking-form').onsubmit = function(e) {
+                document.querySelector('form[action="https://api.web3forms.com/submit"]').onsubmit = function(e) {
                   e.preventDefault();
                   var form = this;
                   var data = new FormData(form);
@@ -570,20 +573,20 @@
                     headers: { 'Accept': 'application/json' }
                   }).then(response => {
                     if (response.ok) {
-                      showWeb3FormsResult('Thank you! Your booking request has been sent.', true);
+                      showResult('Thank you! Your booking request has been sent.', true);
                       form.reset();
                     } else {
                       response.json().then(data => {
-                        showWeb3FormsResult(data.message || 'Oops! Something went wrong.', false);
+                        showResult(data.message || 'Oops! Something went wrong.', false);
                       });
                     }
                   }).catch(error => {
-                    showWeb3FormsResult('Oops! Something went wrong.', false);
+                    showResult('Oops! Something went wrong.', false);
                   });
                 };
 
-                function showWeb3FormsResult(message, isSuccess) {
-                  var resultDiv = document.getElementById('web3forms-result');
+                function showResult(message, isSuccess) {
+                  var resultDiv = document.getElementById('result');
                   resultDiv.innerHTML = `<div class="alert ${isSuccess ? 'alert-success' : 'alert-danger'}" role="alert">${message}</div>`;
                   setTimeout(function() {
                     resultDiv.innerHTML = '';
