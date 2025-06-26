@@ -55,18 +55,18 @@
                 <div class="col-9">
                     <div class="main-menu">
                         <a href="#0" class="closebt open_close_menu"><i class="bi bi-x"></i></a>
-                        <div class="logo_panel"><img src="img/logo_sticky.png" width="135" height="45" alt=""></div>
+                        <div class="logo_panel"><h3>Regalia Banquet & Resort</h3></div>
                         <nav id="mainNav">
                             <ul>
-                                 <li class="submenu">
-                                    <a href="index.html" class="show-submenu">Home</a>
+                                 <li>
+                                    <a href="index.html">Home</a>
                                    
                                 </li>
                                 <li class="submenu">
                                      <a href="room-list-2.html" class="show-submenu">Rooms</a>
                                     <ul>
                                         <li><a href="DeluxRoom.html">DELUXE ROOM</a></li>
-                                        <li><a href="room-details2.html">STANDARD ROOM</a></li>
+                                        <li><a href="StandardRoom.html">STANDARD ROOM</a></li>
                                       
                                     </ul>
                                 </li>
@@ -330,12 +330,12 @@
                 <div class="col-xl-7">
                     <div data-cue="slideInUp" data-delay="200">
                         <div class="booking_wrapper">
-                            <form action="#" method="post"> <!-- Replace with your backend script -->
+                            <form action="https://api.web3forms.com/submit" method="POST" id="web3forms-booking-form"> <!-- Connected to Web3Forms -->
+                                <input type="hidden" name="access_key" value="0157d954-4db6-4ba2-9795-47ef108007b7" />
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
                                         <label for="booking_date">Name:</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Your Name"
-                                            required>
+                                        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                         <label for="booking_date">Select a booking date:</label>
@@ -343,37 +343,26 @@
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                         <label for="booking_date">Phone Number:</label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="Phone Number"
-                                            required>
+                                        <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                         <label for="booking_date">Subject:</label>
-                                        <input type="text" name="subject" class="form-control" placeholder="Subject"
-                                            required>
+                                        <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label for="booking_date">Your Message:</label>
-                                        <textarea name="message" rows="5" class="form-control"
-                                            placeholder="Your Message" required></textarea>
+                                        <textarea name="message" rows="5" class="form-control" placeholder="Your Message" required></textarea>
                                     </div>
                                 </div>
                                 <p class="text-end mt-4">
                                     <button type="submit" class="btn_1 outline">Send Message</button>
                                 </p>
                             </form>
+                            <div id="web3forms-result" style="margin-top: 1rem;"></div>
                         </div>
                     </div>
                 </div>
-
-                <script>
-                flatpickr("#booking_date", {
-                    dateFormat: "Y-m-d",
-                });
-                </script> -->
-
-                <!-- /col -->
             </div>
-            <!-- /row -->
         </div>
         <!-- /container -->
     </main>
@@ -413,7 +402,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <!-- <div class="col-lg-3 col-md-6">
                     <div id="newsletter">
                         <h5>Newsletter</h5>
                         <div id="message-newsletter"></div>
@@ -426,7 +415,7 @@
                         </form>
                         <p>Receive latest offers and promos without spam. You can cancel anytime.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!--/row-->
         </div>
@@ -475,6 +464,37 @@
             }
         });
     });
+</script>
+<script>
+  document.getElementById('web3forms-booking-form').onsubmit = function(e) {
+    e.preventDefault();
+    var form = this;
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        showWeb3FormsResult('Thank you! Your booking request has been sent.', true);
+        form.reset();
+      } else {
+        response.json().then(data => {
+          showWeb3FormsResult(data.message || 'Oops! Something went wrong.', false);
+        });
+      }
+    }).catch(error => {
+      showWeb3FormsResult('Oops! Something went wrong.', false);
+    });
+  };
+
+  function showWeb3FormsResult(message, isSuccess) {
+    var resultDiv = document.getElementById('web3forms-result');
+    resultDiv.innerHTML = `<div class=\"alert ${isSuccess ? 'alert-success' : 'alert-danger'}\" role=\"alert\">${message}</div>`;
+    setTimeout(function() {
+      resultDiv.innerHTML = '';
+    }, 5000);
+  }
 </script>
 
 </body>

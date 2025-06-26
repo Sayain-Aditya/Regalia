@@ -200,7 +200,7 @@
                                     </span>
                                     <span class="button-text">Book Now</span>
                                 </a>
-                                <a href="DeluxRoom.html" class="animated_link">
+                                <a href="StandardRoom.html" class="animated_link">
                                     <strong>Details</strong>
                                 </a>
                             </div>
@@ -283,12 +283,12 @@
                 <div class="col-xl-7">
                     <div data-cue="slideInUp" data-delay="200">
                         <div class="booking_wrapper">
-                            <form action="#" method="post"> <!-- Replace with your backend script -->
+                            <form action="https://api.web3forms.com/submit" method="POST" id="web3forms-booking-form"> <!-- Connected to Web3Forms -->
+                                <input type="hidden" name="access_key" value="0157d954-4db6-4ba2-9795-47ef108007b7" />
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
                                         <label for="booking_date">Name:</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Your Name"
-                                            required>
+                                        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                         <label for="booking_date">Select a booking date:</label>
@@ -296,35 +296,25 @@
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                         <label for="booking_date">Phone Number:</label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="Phone Number"
-                                            required>
+                                        <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                         <label for="booking_date">Subject:</label>
-                                        <input type="text" name="subject" class="form-control" placeholder="Subject"
-                                            required>
+                                        <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label for="booking_date">Your Message:</label>
-                                        <textarea name="message" rows="5" class="form-control"
-                                            placeholder="Your Message" required></textarea>
+                                        <textarea name="message" rows="5" class="form-control" placeholder="Your Message" required></textarea>
                                     </div>
                                 </div>
                                 <p class="text-end mt-4">
                                     <button type="submit" class="btn_1 outline">Send Message</button>
                                 </p>
                             </form>
+                            <div id="web3forms-result" style="margin-top: 1rem;"></div>
                         </div>
                     </div>
                 </div>
-
-                <script>
-                flatpickr("#booking_date", {
-                    dateFormat: "Y-m-d",
-                });
-                </script> -->
-
-                <!-- /col -->
             </div>
             <!-- /row -->
         </div>
@@ -366,7 +356,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <!-- <div class="col-lg-3 col-md-6">
                     <div id="newsletter">
                         <h5>Newsletter</h5>
                         <div id="message-newsletter"></div>
@@ -379,7 +369,7 @@
                         </form>
                         <p>Receive latest offers and promos without spam. You can cancel anytime.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!--/row-->
         </div>
@@ -411,6 +401,37 @@
 <script src="js/common_functions.js"></script>
 <script src="js/datepicker_inline.js"></script>
 <script src="phpmailer/validate.js"></script>
+<script>
+  document.getElementById('web3forms-booking-form').onsubmit = function(e) {
+    e.preventDefault();
+    var form = this;
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        showWeb3FormsResult('Thank you! Your booking request has been sent.', true);
+        form.reset();
+      } else {
+        response.json().then(data => {
+          showWeb3FormsResult(data.message || 'Oops! Something went wrong.', false);
+        });
+      }
+    }).catch(error => {
+      showWeb3FormsResult('Oops! Something went wrong.', false);
+    });
+  };
+
+  function showWeb3FormsResult(message, isSuccess) {
+    var resultDiv = document.getElementById('web3forms-result');
+    resultDiv.innerHTML = `<div class="alert ${isSuccess ? 'alert-success' : 'alert-danger'}" role="alert">${message}</div>`;
+    setTimeout(function() {
+      resultDiv.innerHTML = '';
+    }, 5000);
+  }
+</script>
 
 </body>
 

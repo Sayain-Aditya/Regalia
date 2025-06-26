@@ -3115,7 +3115,7 @@ a.box_contents:hover img {
 
 .map_contact iframe {
   width: 100%;
-  filter: grayscale(85%);
+  filter: none !important;
   height: 450px;
   margin-bottom: -10px;
 }

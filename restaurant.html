@@ -269,7 +269,7 @@
               </div>
             <div class="col-lg-5">
                 <div>
-                    <ul class="list-unstyled mb-4">
+                    <!-- <ul class="list-unstyled mb-4">
                         <li class="d-flex justify-content-between mb-2 text-end">
                             <strong>Breakfast</strong> <span>7.00am – 10.30am</span>
                         </li>
@@ -279,8 +279,42 @@
                         <li class="d-flex justify-content-between mb-2 text-end">
                             <strong>Dinner</strong>  <span>open from 7.30pm<br><small>(kitchen close at 11.30pm)</small></span>
                         </li>
-                    </ul>
+                    </ul> -->
                     <p class="phone_element"><a href="tel://423424234"><i class="bi bi-telephone"></i><span><em>Reservations</em>+91-9554906092</span></a></p>
+                    <form id="reservationForm"> <!-- No action, handled by JS -->
+                      <input type="hidden" name="access_key" value="0157d954-4db6-4ba2-9795-47ef108007b7" />
+                      <div class="row">
+                        <div class="col-lg-6 mb-3">
+                          <label for="booking_name">Name:</label>
+                          <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                          <label for="booking_date">Select a booking date:</label>
+                          <input type="date" id="booking_date" name="booking_date" class="form-control" placeholder="Select a booking date" required>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                          <label for="booking_phone">Phone Number:</label>
+                          <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label for="booking_message">Your Message:</label>
+                          <textarea name="message" rows="5" class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                      </div>
+                      <p class="text-end mt-4">
+                        <button type="submit" class="btn_1 outline">Send Message</button>
+                      </p>
+                    </form>
+                    <div id="formSuccessMsg" style="display:none;" class="alert alert-success mt-3 text-center">
+                      Thank you! Your reservation request has been received.
+                    </div>
+                    <script>
+                      document.getElementById('reservationForm').addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        document.getElementById('reservationForm').style.display = 'none';
+                        document.getElementById('formSuccessMsg').style.display = 'block';
+                      });
+                    </script>
                 </div>
               </div>
           </div>
@@ -637,7 +671,7 @@
               </div>
               <!-- /tabs_menu-->
 
-                <p class="text-center mt-5"><a href="#" class="btn_1 outline">View Day Menu</a></p>
+                <!-- <p class="text-center mt-5"><a href="#" class="btn_1 outline">View Day Menu</a></p> -->
             </div>
             <!-- /container -->
         </div>
@@ -680,7 +714,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <!-- <div class="col-lg-3 col-md-6">
                     <div id="newsletter">
                         <h5>Newsletter</h5>
                         <div id="message-newsletter"></div>
@@ -693,7 +727,7 @@
                         </form>
                         <p>Receive latest offers and promos without spam. You can cancel anytime.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!--/row-->
         </div>
