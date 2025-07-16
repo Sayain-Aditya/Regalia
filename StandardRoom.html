@@ -37,6 +37,13 @@
   color: #ebd7b2;
   font-weight: bold;
 }
+
+/* Hide desktop navbar on mobile */
+@media (max-width: 991px) {
+  .main-menu {
+    display: none !important;
+  }
+}
     </style>
 </head>
 
@@ -80,12 +87,12 @@
           <a href="#booking_section" style="color: #fff; background: #760f10; border-radius: 6px; padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-size: 15px; text-decoration: none; display: inline-block;">BOOK NOW</a>
         </div>
       </div>
-      <a href="tel:9554906092">
+      <a href="tel:8112889999">
         <button class="btn-floating phone" style="position:absolute; right:25px; bottom:110px; z-index:2100;">
           <i class="fa-solid fa-phone"></i>
         </button>
       </a>
-      <a href="https://api.whatsapp.com/send?phone=9554906092&text=Hello%20Sir%2C%20I%20have%20a%20question%20about..." target="_blank">
+      <a href="https://api.whatsapp.com/send?phone=8112889999&text=Hello%20Sir%2C%20I%20have%20a%20question%20about..." target="_blank">
         <button class="btn-floating whatsapp" style="position:absolute; right:25px; bottom:50px; z-index:2100;">
           <i class="fa-brands fa-whatsapp"></i>
         </button>
@@ -230,7 +237,36 @@
             </a>
           </div>
           <div class="col-6" style="margin-left: 512px">
-            <div class="hamburger_2 open_close_menu float-end" style="z-index: 999; position: absolute; right: 30px; top: 82px">
+            <div class="main-menu">
+              <a href="#0" class="closebt open_close_menu"
+                ><i class="bi bi-x"></i
+              ></a>
+              <div class="logo_panel">
+                <!-- <img src="img/logo_sticky.png" width="135" height="45" alt="">
+                              -->
+                <h3>Regalia Banquet & Resort</h3>
+              </div>
+              <nav id="mainNav">
+             <ul style="margin-top: -98px;">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li class="submenu">
+                    <a href="room-list-2.html" class="show-submenu">Rooms</a>
+                    <ul>
+                      <li><a href="DeluxRoom.html">DELUXE ROOM</a></li>
+                      <li><a href="StandardRoom.html">STANDARD ROOM</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="contacts.html">Contacts</a></li>
+                  <li><a href="#booking_section" class="btn_1">Book Now</a></li>
+                  <!-- <li><a href="#booking_section" class="btn_1">Book Now</a></li> -->
+                </ul>
+              </nav>
+            </div>
+            <div
+              class="hamburger_2 open_close_menu float-end"
+              style="z-index: 999; position: absolute; right: 30px; top: 82px"
+            >
               <div class="hamburger__box">
                 <div class="hamburger__inner"></div>
               </div>
@@ -243,7 +279,7 @@
     <main>
 
         <div class="hero full-height jarallax" data-jarallax data-speed="0.2">
-            <img class="jarallax-img kenburns" src="img/rooms/1.jpg" alt="">
+<img class="jarallax-img kenburns" src="img/rooms/1.jpg" alt="" style="top: -56px; width: 1260px; height: 1116px;">
             <div class="wrapper opacity-mask d-flex align-items-center  text-center animate_hero" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -339,9 +375,9 @@
                         </div>
                         <p>Check Availability allows you to quickly confirm the status of rooms, services, or
                             facilities, ensuring you can plan your visit with ease and secure your desired dates.</p>
-                        <p class="phone_element no_borders"><a href="tel://9554906092"><i
+                        <p class="phone_element no_borders"><a href="tel://8112889999"><i
                                     class="bi bi-telephone"></i><span><em>Info and
-                                        bookings</em>+91-9554906092</span></a></p>
+                                        bookings</em>+91-8112889999</span></a></p>
                     </div>
                 </div>
                 <div class="col-xl-7">

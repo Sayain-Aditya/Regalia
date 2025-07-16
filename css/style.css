@@ -3823,7 +3823,7 @@ a.box_contents:hover img {
 }
 
 .pinned-image__container-overlay {
-  background: rgba(0, 0, 0, 0.6);
+  /* background: rgba(0, 0, 0, 0.6); */
   bottom: 0;
   left: 0;
   position: absolute;
